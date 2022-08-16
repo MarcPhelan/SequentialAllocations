@@ -3,7 +3,7 @@ import random
 from utils import *
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "setkey2"
+app.config["SECRET_KEY"] = "!6yw2=28$b%i7#b^yl031f7bl8(ic=pgu^a7j+*#(x-a$mjwgl"
 
 
 @app.route('/', methods=["GET"])
@@ -178,6 +178,7 @@ def end():
     session['describe_strategy'] = request.form['describe_strategy']
 
     payout = random.choice([1, 2, 3])
+    # payout = random.choice([1, 2, 3, 4, 5])
     session['payout'] = payout
     print(f"The payout game is: Game {payout}")
 
