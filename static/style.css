@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --blue: blue;
+}
+body {
+    background: linear-gradient(to right, var(--blue) 50%, #f9fbfc 50%) fixed;
+    font-family: Open Sans, helvetica, serif;
+}
+button {
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: medium;
+    margin: 10px auto;
+    background-color: white;
+    cursor: pointer;
+}
+input {
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 6px;
+    padding: 4px 5px;
+    font-size: large;
+    margin: 10px auto;
+    text-align: center;
+}
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-style: oblique;
+    margin: 10px auto;
+}
+p {
+    text-align: center;
+    font-size: large;
+    margin: 10px auto;
+}
+label {
+    font-size: medium;
+}
+.container {
+    min-height: 40vh;
+    background-color: white;
+    width: 60vw;
+    margin: 10vh auto;
+    padding: 10vh 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 1vw;
+    box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+}
+
+  
+@media screen and (min-width: 800px) {
+    .container {
+        width: 60vw;
+    }
+}
+
+
+/* @media screen and (min-width: 400px) {
+    .container {
+        width: 95vw;
+    }
+} */

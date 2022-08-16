@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+<div class="slideshow-container">
+
+    <div class="mySlides">
+        <h2> Payment Structure </h2>
+        <p>
+            You will complete the investment game multiple times. At the end of the study, one game will be randomly
+            selected by the computer.
+        </p>
+    </div>
+
+
+    <div class="mySlides">
+        <h2> Payment Structure </h2>
+        <p>
+            If you went bankrupt during this game you will only receive the stated participation fee.
+        </p>
+    </div>
+
+    <div class="mySlides">
+        <h2> Payment Structure </h2>
+        <p>
+            If you did not go bankrupt then you will receive the stated participation fee plus some performance related
+            payment.
+            <br><br>
+            In this case, one round will be randomly selected and your wealth at the end of this round will be paid to you at an exchange rate of &zeta;100 = £1.
+        </p>
+    </div>
+
+
+    <div class="mySlides">
+        <h2> Payment Structure </h2>
+        <form action="/begin", method="POST">
+            <p>
+                We will inform you which game was randomly selected at the end of the study.
+                <br><br>
+                Any performance related pay may take up-to 7 days to reach your account.
+            </p>
+            <br><br>
+            <button type="submit">Continue</button>
+       </form>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+
+
+<div class="dot-container">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+<script type="text/javascript">
+
+
+	document.getElementsByClassName("container")[0].style.setProperty("padding", "2vh 3vw");
+
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+{% endblock content%}

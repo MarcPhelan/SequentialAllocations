@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <form action="/saving" method="POST">
+
+        <h2>You have completed the Study</h2>
+
+        <h3>
+            <i> Game {{ payout_flask }} </i> was randomly selected by the computer to receive the extra performance related payment.
+        </h3>
+
+        <p>
+            This payment depends on whether you went bankrupt during this game. <b>We will inform you of any additional payment within 7 days.</b>
+        </p>
+        <button type="submit">End</button>
+    </form>
+{% endblock content%}

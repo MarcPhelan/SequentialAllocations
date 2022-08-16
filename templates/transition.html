@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+	<style>
+		h2 {
+			margin-bottom: 3vh;
+		}
+	</style>
+
+	<h2>{{heading}}</h2>
+	<p>{{para}}</p>
+	<form action="/{{redirect_to}}" method="GET" class="form-game" id="myForm">
+		<button type="submit">{{next}}</button>
+	</form>
+
+
+{% endblock content%}

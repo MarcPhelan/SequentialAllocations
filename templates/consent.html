@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Consent</h1>
+<p>
+	This research is being conducted at the <a href="https://warwick.ac.uk/fac/soc/wbs/subjects/bsci"> University of Warwick </a>,
+            is funded by the <a href="https://www.behavioural-science.ac.uk/index.aspx"> Network for Integrated Behavioural Science</a>,
+            and has been approved by the University of Warwick’s Humanities and Social Science Research Ethics Committee.
+            <br><br>
+            Your participation is completely voluntary and you can withdraw at any time by simply closing your browser.
+            However, we are only able to pay you if you complete the survey. No identifiable data will be collected from you as part of this study.
+            Any data collected will be stored on highly secured computers and will be processed only for the purpose of scientific analysis.
+            Access to the data will be restricted to the investigators running the study, their collaborators, and relevant funding bodies.
+			Summaries may be presented at conferences and included in scientific publications.
+			<br><br>
+            In line with the University of Warwick's data retention policy, Data will be reviewed after a period of 10 years.
+            For further information please refer to the
+            <a href="https://warwick.ac.uk/services/idc/dataprotection/privacynotices/researchprivacynotice">
+            University of Warwick Research Privacy Notice </a> or contact the Information and Data Compliance Team at:
+            <a href="mailto:GDPR@warwick.ac.uk">GDPR@warwick.ac.uk</a>. For more details contact:
+            <a href="mailto:marc.phelan@warwick.ac.uk">marc.phelan@warwick.ac.uk</a></b>.</p>
+</p>
+<form class="form-consent" action="/background" method="POST">
+	<div>
+		<input type="radio" required name="consent" id="yes" value="yes">
+		<label for="yes"> <b>I consent to take part.</b></label>
+	</div>
+	<div>
+		<input type="radio" name="consent" id="no" value="no">
+		<label for="no"> <b>I do not wish to take part. </b></label>
+	</div>
+	<button type="submit">Continue</button>
+</form>
+
+{% endblock content%}

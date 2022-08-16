@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+
+<div class="slideshow-container">
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		<p>
+			In this study you will partake in an investment game. This game mimics important aspects of many
+			real-world
+			investing decisions.
+			<br><br>
+			You will complete the investment game multiple times. The same instructions apply to each game.
+		</p>
+	</div>
+
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		<p>
+			Your total wealth at the outset will be &zeta;200. &zeta; is a fictional currency known as Libra.
+		</p>
+	</div>
+
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		<p>
+			Like all real-world investments, you will have to face risk to earn a return.
+			<br><br>
+			Here two risky stocks (ABC and XYZ) are used.
+		</p>
+	</div>
+
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		<p>
+			Only one stock will increase in value during each investment period.
+		</p>
+	</div>
+
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		{% if game_flask == 1 %}
+		<p>
+			You will invest money on the stock you believe will increase in value during the next period.
+			<br><br>
+			You can invest <b>AS MUCH OR AS LITTLE</b> of your current wealth as you want.
+		</p>
+		{% else %}
+		<p>
+			You will invest money on the stock you believe will increase in value during the next period.
+			<br><br>
+			You must invest <b>ALL</b> of your current wealth, but you can spread it
+			between ABC and XYZ in whatever way you like.
+		</p>
+		{% endif %}
+	</div>
+
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		{% if game_flask == 1 %}
+		<p>
+			Any amount invested on the stock that increases in value is doubled, and any amount invested on the
+			other stock
+			is lost.
+			<br><br>
+			If you wish to invest nothing, select either ABC or XYZ and enter 0.
+		</p>
+		{% else %}
+		<p>
+			Any amount invested on the stock that increases in value is doubled, and any amount invested on the
+			other stock
+			is lost.
+			<br><br>
+			If you wish to invest nothing, split your wealth 50/50 between ABC and XYZ.
+		</p>
+		{% endif %}
+	</div>
+
+	<div class="mySlides">
+		<h2> The Investment Game </h2>
+		<form action="/incentive", method="POST">
+			<p>
+				The aim of the game is to earn as much money as possible.
+	            <br><br>
+	            The game will end if your wealth falls below &zeta;1. We refer to this as bankruptcy.
+			</p>
+			<br><br>
+			<button type="submit">Continue</button>
+		</form>
+	</div>
+
+	<a class="prev" onclick="plusSlides(-1)">❮</a>
+	<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+
+
+<div class="dot-container">
+	<span class="dot" onclick="currentSlide(1)"></span>
+	<span class="dot" onclick="currentSlide(2)"></span>
+	<span class="dot" onclick="currentSlide(3)"></span>
+	<span class="dot" onclick="currentSlide(4)"></span>
+	<span class="dot" onclick="currentSlide(5)"></span>
+	<span class="dot" onclick="currentSlide(6)"></span>
+	<span class="dot" onclick="currentSlide(7)"></span>
+</div>
+
+<script type="text/javascript">
+
+	document.getElementsByClassName("container")[0].style.setProperty("padding", "2vh 3vw");
+
+	//for background information slideshow
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	function plusSlides(n) {
+		showSlides(slideIndex += n);
+	}
+
+	function currentSlide(n) {
+		showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+		var i;
+		var slides = document.getElementsByClassName("mySlides");
+		var dots = document.getElementsByClassName("dot");
+		if (n > slides.length) { slideIndex = 1 }
+		if (n < 1) { slideIndex = slides.length }
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		}
+		slides[slideIndex - 1].style.display = "flex";
+		dots[slideIndex - 1].className += " active";
+	}
+</script>
+{% endblock content%}

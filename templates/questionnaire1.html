@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main info">
+    <form action="/questionnaire2" method="POST">
+        <h2> Questionnaire 1 </h2>
+        <div style="text-align: center; width: 100%">
+            <div>
+                <p> <b>How many Libra did you have to invest at the start of the challenge?</b>
+                <p>
+                    <input type="radio" required name="attention" id="1" value="1">
+                    <label for="1"> &zeta;2,000 </label><br>
+                    <input type="radio" name="attention" id="2" value="2">
+                    <label for="2"> &zeta;1,000 </label><br>
+                    <input type="radio" name="attention" id="3" value="3">
+                    <label for="3"> &zeta;500 </label><br>
+                    <input type="radio" name="attention" id="4" value="4">
+                    <label for="4"> &zeta;200 </label>
+            </div><br><br>
+
+            <div style="padding-top: 5px;">
+                <br>
+                <label for="prob_estimate" style="font-size: 1.16em">
+                    <b>If you made 100 investments, how many times do you think ABC would increase in value on average?</b>
+                </label><br><br>
+                <input max="100" onkeypress="return isNumberKey(event)" id="prob_estimate" name="prob_estimate" autocomplete="off" required>
+            </div>
+            <button type="submit">Continue</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>
+
+{% endblock content%}

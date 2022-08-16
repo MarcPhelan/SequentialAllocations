@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1><b> Game Over </b></h1>
+<p> You went bankrupt. Press <i>Continue</i> to exit. </p>
+<form action="/Transition">
+	<input type="submit" name="Play" value="Continue"
+		style="border-radius: 0.5vw; padding: 0.5vh 2vw; background-color: rgba(0, 0, 0, 0.1); ">
+</form>
+<br>
+
+{% endblock content%}

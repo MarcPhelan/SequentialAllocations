@@ -1,0 +1,111 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+	<h1>Current Wealth: ζ{{wealth}}</h1>
+	<p>{{message}}</p>
+	<form action="/game" method="POST" class="form-game" id="myForm">
+		{% if game_flask == 1 %}
+		<div style="display: flex; justify-content: center">
+			<label style="margin: 1px 6px;" class="radio_text" for="stock_invested_1">
+				<input type='radio' required name="stock_invested" id="stock_invested_1" value="1">
+				ABC
+			</label>
+			<label style="margin: 1px 6px;" class="radio_text" for="stock_invested_2">
+				<input type='radio' required name="stock_invested" id="stock_invested_2" value="2">
+				XYZ
+			</label>
+		</div>
+		<input onkeypress="return isNumberKey(event)" name="amount_invested" id="amount_invested" placeholder="Enter Investment" autocomplete="off" max="{{ wealth }}">
+		{% else %}
+		<div>
+			<div style="display: flex">
+				<h3>ABC</h3>
+				<h3>XYZ</h3>
+			</div>
+			<div style="display: flex">
+				<input style="width: 40%" onkeypress="return isNumberKey(event)" name="ABC_invested" id="ABC_invested" placeholder="Enter Investment" autocomplete="off" max="{{ wealth }}" />
+				<input style="width: 40%" onkeypress="return isNumberKey(event)" name="XYZ_invested" id="XYZ_invested" placeholder="Enter Investment" autocomplete="off" max="{{ wealth }}" />
+
+			</div>
+		</div>
+
+		{% endif %}
+		<button type="submit">Invest</button>
+	</form>
+
+	<script>
+		var form = document.getElementById("myForm");
+		function handleForm(event) {
+
+			{% if game_flask == 1 %}
+			if (amount_invested.value === "") {
+				amount_invested.style.setProperty("border-color", "red")
+				event.preventDefault();
+			}
+			{% else %}
+			if (ABC_invested.value === "") {
+				ABC_invested.style.setProperty("border-color", "red")
+				event.preventDefault();
+			}
+			if (XYZ_invested.value === "") {
+				XYZ_invested.style.setProperty("border-color", "red")
+				event.preventDefault();
+			}
+			{% endif %}
+		}
+		form.addEventListener('submit', handleForm);
+
+
+		function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+		{% if game_flask == 1 %}
+		var current_wealth = {{ wealth }};
+		amount_invested.oninput = function () {
+			var max = parseInt(this.max);
+			var investment = parseInt(this.value);
+			if (investment > current_wealth) {
+				this.value = max;
+			}
+		}
+		{% else %}
+		var current_wealth = {{ wealth }};
+		ABC_invested.oninput = function () {
+			var max = parseInt(this.max);
+			var investment = parseInt(this.value);
+			var result = (current_wealth - investment);
+
+			if (investment > current_wealth) {
+				this.value = max;
+				XYZ_invested.value = 0;
+			}
+			else {
+				XYZ_invested.value = !isNaN(result) ? result : '';
+			}
+		};
+		XYZ_invested.oninput = function () {
+			var max = parseInt(this.max);
+			var investment = parseInt(this.value);
+			var result = (current_wealth - investment);
+
+			if (investment > current_wealth) {
+				this.value = max;
+				ABC_invested.value = 0;
+			}
+			else {
+				ABC_invested.value = !isNaN(result) ? result : '';
+			}
+		};
+		{}
+		{% endif %}
+
+
+	</script>
+
+{% endblock content%}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="/end" method="POST">
+        <h2> Questionnaire 2 </h2>
+        <div style="text-align: center; width: 100%">
+            <div style="padding-top: 5px;">
+                <p> <b>Did you have an investment strategy?</b>
+                <p>
+                    <input type="radio" required name="strategy" id="1" value="1">
+                    <label for="1"> I had no strategy </label><br>
+                    <input type="radio" name="strategy" id="2" value="2">
+                    <label for="2"> I decided on a strategy before completing the challenge </label><br>
+                    <input type="radio" name="strategy" id="3" value="3">
+                    <label for="3"> I developed a strategy while completing the challenge </label><br>
+                    <input type="radio" name="strategy" id="4" value="4">
+                    <label for="4"> I used more than one strategy </label><br>
+                    <input type="radio" name="strategy" id="5" value="5">
+                    <label for="5"> I am unsure whether I had a strategy or not </label>
+            </div>
+
+            <div style="padding-top: 5px;">
+                <p> <b>Please describe your strategy to us in one or two sentences:</b>
+                <p>
+                    <textarea style="width: 80%; padding: 5px 10%" name="describe_strategy" id="describe_strategy" cols="50" rows="10"></textarea>
+            </div>
+            <button type="submit">Continue</button>
+        </div>
+
+    </form>
+
+
+{% endblock content%}
